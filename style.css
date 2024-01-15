@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-image: url('./img/tosh.jpg');
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    color: rgb(255, 136, 0);
+}
+.block {
+    background-color: transparent;
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-shadow: 2px 2px 5px rgb(255, 255, 255)
+}
