@@ -2,16 +2,18 @@ const wrapper = document.getElementById('wrapper');
 
 function createCard(phone) {
   return `
-    <div class="block card" style="width: 18rem;">
-      <div class="card-body">
-         <h5 class="card-title">Iphone</h5>
-         <p class="card-text">Iphone</p>
-         <p class="card-text">300$</p>
-         <a href="#" class="btn btn-primary">Btafsil malumotlar</a>
-      </div>
+  <div class="block card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">${phone.name}</h5>
+      <p class="card-text">${phone.description}</p>
+      <p class="card-text">${phone.price}</p>
+      <a href="#" class="btn btn-primary more-info" id="element_${phone.id}">Btafsil malumotlar</a>
     </div>
+  </div>
   `;
 }
+
+
 
 document.addEventListener('DOMContentLoaded', function() {
   fetch("https://auth-rg69.onrender.com/api/products/all", {
@@ -25,7 +27,15 @@ document.addEventListener('DOMContentLoaded', function() {
           wrapper.innerHTML += card;
         });
       }
-      console.log(data)
+      let moreButtons = document.querySelectorAll('a.more-info');
+      moreButtons.length && moreButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          let elId = this.getAttribute('id').substring(8);
+          if(elId) {
+            window.location.assign(`http://127.0.0.1:5500/pages/item.html?id=${elId}`);
+          }
+        })
+      })
     })
     .catch(err => {
       console.log(err);
